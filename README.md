@@ -1,5 +1,8 @@
 ## Test task - Beeline CRUD API (Products & Users)
 
+NOTE: it's bad idea to include .env files in repository, dit it just because of testing purposes
+
+
 How to install:
 
 0) Port 89 must be available & Docker must be running. 
