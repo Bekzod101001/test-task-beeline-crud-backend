@@ -1,6 +1,7 @@
 ## Test task - Beeline CRUD API (Products & Users)
 
 How to install:
+0) Port 89 must be available & Docker must be running. 
 1) composer install
 2) ./vendor/bin/sail up -d
 3) ./vendor/bin/sail artisan migrate
