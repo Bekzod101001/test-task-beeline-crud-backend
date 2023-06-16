@@ -17,6 +17,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $sortBy = $request->sortBy ?? 'created_at';
+        $sortType = $request->sortType ?? 'desc';
         $products = Product::query()
             ->when($request->search, function ($query) use ($request) {
                 return $query->where('name', 'like', '%' . $request->search . '%');
@@ -30,9 +32,7 @@ class ProductController extends Controller
             ->when($request->ownerId, function ($query) use ($request) {
                 return $query->where('user_id', $request->ownerId);
             })
-            ->when($request->sortBy && $request->sortType, function ($query) use ($request) {
-                return $query->orderBy($request->sortBy, $request->sortType);
-            })
+            ->orderBy($sortBy, $sortType)
             ->paginate($request->perPage ?? 20);
 
 
